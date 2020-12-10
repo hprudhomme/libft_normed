@@ -46,7 +46,6 @@ char			*ft_strtrim(char const *s1, char const *set)
 {
 	int		x;
 	int		y;
-	int		malloc_size;
 	char	*str;
 
 	if (!(str = malloc(sizeof(char) *

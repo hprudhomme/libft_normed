@@ -20,6 +20,6 @@ void	ft_bzero(void *s, size_t n)
 	while (n--)
 	{
 		*str = '\0';
-		*str++;
+		str++;
 	}
 }
