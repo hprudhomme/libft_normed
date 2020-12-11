@@ -6,20 +6,25 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:03:27 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/10 15:04:17 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 16:45:59 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+#include <unistd.h>
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	long int nb;
+
+	nb = n;
+	if (nb < 0)
 	{
 		ft_putchar_fd('-', fd);
-		n *= -1;
+		nb *= -1;
 	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + '0', fd);
 }

@@ -6,7 +6,7 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:32:29 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/10 15:33:50 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 17:51:33 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t n)
 	while (big[x] && x < n)
 	{
 		y = 0;
-		while (big[x + y] == little[y] && y < n)
+		while (big[x + y] == little[y] && x + y < n)
 		{
 			y++;
-			if (little[y] == '\0' || y == n)
+			if (little[y] == '\0')
 				return ((char*)big + x);
 		}
 		x++;

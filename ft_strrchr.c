@@ -6,7 +6,7 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:34:30 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/10 15:35:36 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 17:18:05 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *save;
+	int i;
 
-	save = 0;
-	while (*s)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		if (*s == c)
-			save = (char*)s;
-		s++;
+		if (s[i] == c)
+			return ((char *)s + i);
+		i--;
 	}
-	return (save);
+	return (NULL);
 }
