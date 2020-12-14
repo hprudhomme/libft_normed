@@ -12,16 +12,19 @@
 
 #include "libft.h"
 
+int		ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int		ft_atoi(const char *str)
 {
 	int sign;
 	int res;
-	int i;
 
-	i = 0;
 	sign = 1;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
-		i++;
+		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
@@ -35,4 +38,10 @@ int		ft_atoi(const char *str)
 		str++;
 	}
 	return (res * sign);
+}
+
+int main()
+{
+	printf("%d \n", ft_atoi(""));
+	return 0;
 }

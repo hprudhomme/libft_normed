@@ -12,6 +12,16 @@
 
 #include "libft.h"
 
+int	ft_strlen(const char *s)
+{
+	int x;
+
+	x = 0;
+	while (s[x])
+		x++;
+	return (x);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
@@ -37,4 +47,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[y] = '\0';
 	return (str);
+}
+
+int main()
+{	
+	char	s1[] = "lorem ipsum";
+	char	s2[] = "dolor sit amet";
+
+	s2[0] = '\0';
+	s1[0] = '\0';
+	printf("%s \n", ft_strjoin(s1, s2));
+	return 0;
 }

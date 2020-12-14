@@ -12,6 +12,16 @@
 
 #include "libft.h"
 
+int	ft_strlen(const char *s)
+{
+	int x;
+
+	x = 0;
+	while (s[x])
+		x++;
+	return (x);
+}
+
 static int		istrim(char c, char const *set)
 {
 	int x;
@@ -26,41 +36,54 @@ static int		istrim(char c, char const *set)
 	return (0);
 }
 
-static int		calc_trim_malloc(char const *s1, char const *set)
+static int		start_trim(char const *s1, char const *set)
 {
 	int x;
+
+	x = 0;
+	while (s1[x] && istrim(s1[x], set))
+		x++;			
+	printf("debut = %d \n", x);
+	return (x);
+}
+
+static int		end_trim(char const *s1, char const *set)
+{
+	int x = ft_strlen(s1) - 1;
 	int count;
 
-	count = 0;
-	x = 0;
-	while (s1[x])
-	{
-		if (istrim(s1[x], set))
-			count++;
-		x++;
-	}
-	return (count);
+	while (x >= 0 && istrim(s1[x], set))
+		x--;
+		printf("fin = %d \n", x);
+	return (x);
 }
 
 char			*ft_strtrim(char const *s1, char const *set)
 {
+	int		start__trim;
+	int		end__trim;
 	int		x;
-	int		y;
 	char	*str;
 
+	start__trim = start_trim(s1, set);
+	end__trim = end_trim(s1, set);
 	if (!(str = malloc(sizeof(char) *
-	(ft_strlen(s1) - calc_trim_malloc(s1, set) + 1))))
+	(end_trim - start_trim + 1 + 1))))
 		return (NULL);
 	x = 0;
-	y = 0;
-	while (s1[x])
+	while (start__trim <= end__trim)
 	{
-		if (!(istrim(s1[x], set)))
-		{
-			str[y] = s1[x];
-			y++;
-		}
+		str[x] = s1[start__trim];
+		x++;
+		start__trim++;
 	}
-	str[y] = '\0';
+	str[x] = '\0';
 	return (str);
+}
+
+int main()
+{
+	char s1[] = "          ";
+	printf("%s \n", ft_strtrim(s1, " "));
+	return 0;
 }

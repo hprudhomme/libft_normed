@@ -106,3 +106,16 @@ char					**ft_split(char const *s, char c)
 	tab = ft_spliting(tab, s, c);
 	return (tab);
 }
+
+int main()
+{
+	char **tab;
+	int x = 0;
+	tab = ft_split("", 'z');
+	while (tab[x])
+	{
+		printf("%s \n", tab[x]);
+		x++;
+	}
+	return 0;
+}
