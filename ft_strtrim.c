@@ -6,21 +6,11 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:36:09 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/10 16:28:03 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 16:36:12 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_strlen(const char *s)
-{
-	int x;
-
-	x = 0;
-	while (s[x])
-		x++;
-	return (x);
-}
 
 static int		istrim(char c, char const *set)
 {
@@ -42,19 +32,17 @@ static int		start_trim(char const *s1, char const *set)
 
 	x = 0;
 	while (s1[x] && istrim(s1[x], set))
-		x++;			
-	printf("debut = %d \n", x);
+		x++;
 	return (x);
 }
 
 static int		end_trim(char const *s1, char const *set)
 {
-	int x = ft_strlen(s1) - 1;
-	int count;
+	int x;
 
+	x = ft_strlen(s1) - 1;
 	while (x >= 0 && istrim(s1[x], set))
 		x--;
-		printf("fin = %d \n", x);
 	return (x);
 }
 
@@ -67,8 +55,10 @@ char			*ft_strtrim(char const *s1, char const *set)
 
 	start__trim = start_trim(s1, set);
 	end__trim = end_trim(s1, set);
+	// printf("start %d \n", start__trim);
+	// printf("end %d \n", end__trim);
 	if (!(str = malloc(sizeof(char) *
-	(end_trim - start_trim + 1 + 1))))
+	(end__trim - start__trim + 1 + 1))))
 		return (NULL);
 	x = 0;
 	while (start__trim <= end__trim)
@@ -81,9 +71,9 @@ char			*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-int main()
-{
-	char s1[] = "          ";
-	printf("%s \n", ft_strtrim(s1, " "));
-	return 0;
-}
+// int main()
+// {
+// 	char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+// 	printf("%s \n", ft_strtrim(s1, " "));
+// 	return 0;
+// }

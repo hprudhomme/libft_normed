@@ -6,16 +6,11 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:03:53 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/11 17:12:39 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 16:33:08 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 int		ft_atoi(const char *str)
 {
@@ -38,10 +33,4 @@ int		ft_atoi(const char *str)
 		str++;
 	}
 	return (res * sign);
-}
-
-int main()
-{
-	printf("%d \n", ft_atoi(""));
-	return 0;
 }
