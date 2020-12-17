@@ -6,7 +6,7 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:40:05 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/11 18:38:59 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 19:14:32 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int		x;
 	char				*dst;
+	size_t				len_s;
 
-	if (!(dst = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	x = 0;
-	if (start > (unsigned int)ft_strlen(s))
+	len_s = len;
+	if (start > (unsigned int)ft_strlen(s) - 1)
 	{
-		dst[x] = '\0';
+		if (!(dst = malloc(sizeof(char))))
+			return (NULL);
+		dst[0] = '\0';
 		return (dst);
 	}
-	while (x < len)
+	if ((size_t)start + len > (size_t)ft_strlen(s))
+		len_s = (size_t)ft_strlen(s) - (size_t)start;
+	if (!(dst = malloc(sizeof(char) * (len_s + 1))))
+		return (NULL);
+	x = 0;
+	while (x < len_s)
 	{
 		dst[x] = s[start];
 		x++;

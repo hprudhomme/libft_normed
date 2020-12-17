@@ -36,8 +36,7 @@ static char				**ft_second_malloc(char **tab, char const *s, char c)
 		}
 		if (count != 0)
 		{	
-			// printf("%d \n", count + 1);
-			if (!(tab[i] = malloc(sizeof(char*) * (count))))
+			if (!(tab[i] = malloc(sizeof(char) * (count + 1))))
 				return (NULL);
 			i++;
 		}
@@ -63,7 +62,6 @@ static char				**ft_first_malloc(char **tab, char const *s, char c)
 			x++;
 		}
 	}
-	// printf("%d \n", count + 1);
 	if (!(tab = (char **)malloc(sizeof(char*) * (count + 1))))
 		return (NULL);
 	return (tab);
@@ -90,13 +88,11 @@ static char				**ft_spliting(char **tab, char const *s, char c)
 			col++;
 			if (s[x] == c || !(s[x]))
 			{
-				// printf("ligne : %d || col : %d \n", ligne, col);
 				tab[ligne][col] = '\0';
 				ligne++;
 			}
 		}
 	}
-	// printf("last ligne : %d \n", ligne);
 	tab[ligne] = NULL;
 	return (tab);
 }
@@ -113,24 +109,3 @@ char					**ft_split(char const *s, char c)
 	tab = ft_spliting(tab, s, c);
 	return (tab);
 }
-
-// int main()
-// {
-// 	char **tab;
-// 	int x = 0;
-// 	tab = ft_split("  tripouille  42  ", ' ');
-// 	while (tab[x])
-// 	{
-// 		printf("ligne %d : %s \n", x, tab[x]);
-// 		x++;
-// 	}
-// 	int y = 0;
-// 	int i = 0;
-// 	while (tab[0][y])
-// 	{
-// 		i++;
-// 		y++;
-// 	}
-// 	printf("%d \n", i);
-// 	return 0;
-// }

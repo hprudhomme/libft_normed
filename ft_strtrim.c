@@ -6,7 +6,7 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:36:09 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/16 16:36:12 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 19:28:29 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,15 @@ char			*ft_strtrim(char const *s1, char const *set)
 
 	start__trim = start_trim(s1, set);
 	end__trim = end_trim(s1, set);
-	// printf("start %d \n", start__trim);
-	// printf("end %d \n", end__trim);
+	if (start__trim >= end__trim)
+	{
+		if (!(str = malloc(sizeof(char))))
+			return (NULL);
+		str[0] = '\0';
+		return (str);
+	}
 	if (!(str = malloc(sizeof(char) *
-	(end__trim - start__trim + 1 + 1))))
+	(end__trim - start__trim) + 1 + 1)))
 		return (NULL);
 	x = 0;
 	while (start__trim <= end__trim)
@@ -70,10 +75,3 @@ char			*ft_strtrim(char const *s1, char const *set)
 	str[x] = '\0';
 	return (str);
 }
-
-// int main()
-// {
-// 	char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
-// 	printf("%s \n", ft_strtrim(s1, " "));
-// 	return 0;
-// }
