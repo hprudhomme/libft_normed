@@ -6,7 +6,7 @@
 /*   By: hprudhom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:05:59 by hprudhom          #+#    #+#             */
-/*   Updated: 2020/12/16 16:36:42 by hprudhom         ###   ########lyon.fr   */
+/*   Updated: 2020/12/18 16:22:33 by hprudhom         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char				**ft_second_malloc(char **tab, char const *s, char c)
 			count++;
 		}
 		if (count != 0)
-		{	
+		{
 			if (!(tab[i] = malloc(sizeof(char) * (count + 1))))
 				return (NULL);
 			i++;
@@ -83,9 +83,7 @@ static char				**ft_spliting(char **tab, char const *s, char c)
 		col = 0;
 		while (s[x] != c && s[x])
 		{
-			tab[ligne][col] = s[x];
-			x++;
-			col++;
+			tab[ligne][col++] = s[x++];
 			if (s[x] == c || !(s[x]))
 			{
 				tab[ligne][col] = '\0';

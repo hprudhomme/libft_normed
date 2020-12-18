@@ -67,11 +67,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	x = 0;
 	while (start__trim <= end__trim)
-	{
-		str[x] = s1[start__trim];
-		x++;
-		start__trim++;
-	}
+		str[x++] = s1[start__trim++];
 	str[x] = '\0';
 	return (str);
 }
